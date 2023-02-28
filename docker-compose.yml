@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  clickhouse:
+    container_name: clickhouse
+    image: clickhouse/clickhouse-server:22.8-alpine
+    ports:
+      - "9000:9000"
+      - "8123:8123"
+    env_file:
+      - .env
+    volumes:
+      - ./clickhouse-data:/var/lib/clickhouse/
+    restart: unless-stopped
+  minio:
+    container_name: minio
+    image: minio/minio
+    # Use non-default ports to deconflict from ClickHouse
+    ports:
+      - "10000:9000"
+      - "10001:10001"
+    env_file:
+      - .env
+    volumes:
+      - ./minio-data:/data
+    command: server --console-address ":10001" /data
+    restart: unless-stopped
+  opensearch:
+    container_name: opensearch
+    image: opensearchproject/opensearch:2
+    volumes:
+      - ./opensearch-data:/usr/share/opensearch/data
+    env_file:  # TODO: Figure out how to set password
+      - .env
+    ports:
+      - 9200:9200 # REST API
+      - 9600:9600 # Performance Analyzer
+    restart: unless-stopped
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:2
+    container_name: opensearch-dashboards
+    ports:
+      - 5601:5601 # Map host port 5601 to container port 5601
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch:9200"]' # Define the OpenSearch nodes that OpenSearch Dashboards will query
+    restart: unless-stopped

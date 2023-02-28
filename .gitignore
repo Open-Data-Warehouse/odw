@@ -1,0 +1,7 @@
+# Data
+clickhouse-data
+minio-data
+opensearch-data
+
+# Config
+.env
