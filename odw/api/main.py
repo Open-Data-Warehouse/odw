@@ -17,6 +17,8 @@ app.include_router(csvs.router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_methods=["*"],
+    allow_header=["*"],
 )
 
 
