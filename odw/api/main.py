@@ -1,3 +1,5 @@
+import time
+
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
@@ -16,3 +18,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
 )
+
+
+@app.on_event("startup")
+def startup_tasks():
+    # Small delay to wait for celery to come up and register tasks
+    time.sleep(10)
