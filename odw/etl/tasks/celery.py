@@ -6,5 +6,5 @@ REDIS_PORT = 6379
 BROKER_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
 BACKEND_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/1"
 
-app = Celery("tasks", broker=BROKER_URL, backend=BACKEND_URL, include=["odw.etl.tasks"])
-app.autodiscover_tasks(packages=['odw.etl.tasks'])
+app = Celery("odw", broker=BROKER_URL, backend=BACKEND_URL)
+app.autodiscover_tasks(packages=['odw.etl.tasks'], force=True)
