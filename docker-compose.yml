@@ -1,6 +1,35 @@
 version: "3"
 
 services:
+  api:
+    container_name: odw-api
+    build:
+      context: .
+      dockerfile: docker/api/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    command: python -m uvicorn odw.api.main:app --host 0.0.0.0
+    restart: unless-stopped
+    depends_on:
+      - celery
+      - clickhouse
+      - minio
+  celery:
+    container_name: odw-celery
+    build:
+      context: .
+      dockerfile: docker/celery/Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    restart: unless-stopped
+  redis:
+    container_name: odw-redis
+    image: redis:7-alpine
+    restart: unless-stopped
   clickhouse:
     container_name: clickhouse
     image: clickhouse/clickhouse-server:22.8-alpine

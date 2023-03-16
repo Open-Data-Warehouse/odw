@@ -1,5 +1,6 @@
 # Data
 clickhouse-data
+docker
 minio-data
 opensearch-data
 test-data
@@ -8,6 +9,5 @@ test-data
 .env
 
 # Python
-.idea/
 *.egg-info
 *.pyc
