@@ -46,9 +46,4 @@ class ClickhouseInterface:
     def add_data(self, database: str, table: str, data: List[List[any]]):
         statement = f"INSERT INTO {database}.{table} (*) VALUES"
         args = [tuple(row) for row in data]
-        for row in args:
-            try:
-                self.client.execute(statement, [row])
-            except Exception as e:
-                print(f"Error inserting row: {row}")
-                print(str(e))
+        self.client.execute(statement, args)
