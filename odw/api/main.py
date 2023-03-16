@@ -20,9 +20,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-@app.on_event("startup")
-def startup_tasks():
-    # Small delay to wait for celery to come up and register tasks
-    time.sleep(10)
