@@ -19,7 +19,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push the ODW API Docker image
-        uses: actions/checkout@v3
         run: | 
           docker build . --file docker/api/Dockerfile --tag ghcr.io/${{ github.repository }}/odw-api:latest
           docker push ghcr.io/${{ github.repository }}/odw-api:latest
@@ -35,8 +34,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push the ODW API Docker image
-        uses: actions/checkout@v3
+      - name: Build and push the ODW Celery Docker image
         run: | 
           docker build . --file docker/api/Dockerfile --tag ghcr.io/${{ github.repository }}/odw-api:latest
           docker push ghcr.io/${{ github.repository }}/odw-api:latest
