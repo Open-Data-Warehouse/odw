@@ -1,6 +1,8 @@
 up:
-	docker-compose -f docker-compose.yml -f docker-compose.supserset.yml up -d --build
+	docker-compose -f docker-compose.yml -f docker-compose.superset.yml up -d --build
+up-init:
+	docker-compose -f docker-compose.yml -f docker-compose.superset.yml up -d minio
 down:
-	docker-compose -f docker-compose.yml -f docker-compose.supserset.yml down
+	docker-compose -f docker-compose.yml -f docker-compose.superset.yml down
 logs:
-	docker-compose -f docker-compose.yml -f docker-compose.supserset.yml logs -f
+	docker-compose -f docker-compose.yml -f docker-compose.superset.yml logs -f
