@@ -20,8 +20,8 @@ jobs:
 
       - name: Build and push the ODW API Docker image
         run: | 
-          docker build . --file docker/api/Dockerfile --tag ghcr.io/${{ github.repository }}/odw-api:latest
-          docker push ghcr.io/${{ github.repository }}/odw-api:latest
+          docker build . --file docker/api/Dockerfile --tag ghcr.io/open-data-warehouse/odw-api:latest
+          docker push ghcr.io/open-data-warehous/odw-api:latest
 
   build-celery:
     runs-on: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
 
       - name: Build and push the ODW Celery Docker image
         run: | 
-          docker build . --file docker/api/Dockerfile --tag ghcr.io/${{ github.repository }}/odw-api:latest
-          docker push ghcr.io/${{ github.repository }}/odw-api:latest
+          docker build . --file docker/api/Dockerfile --tag ghcr.io/open-data-warehous/odw-api:latest
+          docker push ghcr.io/open-data-warehous/odw-api:latest
 
 
