@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-api:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
 
       - name: GHCR Login
@@ -27,7 +27,7 @@ jobs:
           docker push ghcr.io/open-data-warehouse/odw-api:latest
 
   build-celery:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
 
       - name: GHCR Login
