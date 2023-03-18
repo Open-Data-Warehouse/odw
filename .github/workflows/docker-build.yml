@@ -42,7 +42,7 @@ jobs:
 
       - name: Build and push the ODW Celery Docker image
         run: | 
-          docker build . --file docker/api/Dockerfile --tag ghcr.io/open-data-warehouse/odw-api:latest
-          docker push ghcr.io/open-data-warehouse/odw-api:latest
+          docker build . --file docker/celery/Dockerfile --tag ghcr.io/open-data-warehouse/odw-celery:latest
+          docker push ghcr.io/open-data-warehouse/odw-celery:latest
 
 
