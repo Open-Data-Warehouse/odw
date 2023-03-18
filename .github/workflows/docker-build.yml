@@ -18,6 +18,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check out code
+        uses: actions/checkout@v3
+
       - name: Build and push the ODW API Docker image
         run: | 
           docker build . --file docker/api/Dockerfile --tag ghcr.io/open-data-warehouse/odw-api:latest
@@ -33,6 +36,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check out code
+        uses: actions/checkout@v3
 
       - name: Build and push the ODW Celery Docker image
         run: | 
