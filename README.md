@@ -5,6 +5,8 @@ data lake and data warehouse capabilities. Example use cases include:
 
 - Ingesting a CSV file, automatically inferring column names and data types, and inserting the data into a SQL database.
 - Ingesting and storing a variety of multimedia files in an object store.
+- Creating custom graphics and dashboards from ingested data.
+
 
 ## Services:
 
@@ -24,14 +26,15 @@ Open Data Warehouse provides the following services:
 4. Log into MinIO (http://<hostname>:10000) and create an access token. Copy the access key and secret key to the appropriate values in `.env`
 5. Start all the services: `make up`
 6. The services should now be available at the following locations:
-    - MinIO: http://<hostname>:10000
-    - Clickhouse: http://<hostname>:8123, native queries at <hostname>:9000
-    - Opensearch: <hostname>:9200
-    - Superset: http://<hostname>:8888
-    - ODW Ingest Service: http://<hostname>:8000/docs
+    - MinIO: http://your-hostname:10000
+    - Clickhouse: http://your-hostname:8123, native queries at <hostname>:9000
+    - Opensearch: https://your-hostname:9200
+    - Opensearch Dashboards: http://your-hostname:5601
+    - Superset: http://your-hostname:8088
+    - ODW Ingest Service: http://your-hostname:8000/docs
 
 ## License
 
 Each individual service retains its own Free and Open Source license.
 
-All software developed under the Open Data Warehouse project are licensed under the Mozilla Public License 2.0.
+All software developed under the Open Data Warehouse project is licensed under the Mozilla Public License 2.0.
